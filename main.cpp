@@ -14,7 +14,7 @@ int main() {
     std::string file_name = ""; 
     // Opening/creating file
     if(answer == 2) {
-        std::string file_name = "new_file.txt";
+        file_name = "new_file.txt";
         printf("Enter file name: ");
         std::cin >> file_name;
         std::fstream File(file_name);
@@ -34,6 +34,8 @@ int main() {
                     i++;
                     continue;
                 } else {
+                    std::ofstream File(temp_name);
+                    File.close();
                     file_name = temp_name;
                     break;
                 }
@@ -51,7 +53,10 @@ int main() {
         uint32_t temp = stoi(item);
         db.push_back(std::make_pair(temp, Book(s)));
     }
-    std::cout << db[0].second._author;
-    
+    Book bk("2,Idiot,Dostoevsky,13.09.2025,10");
+    bk.export_to_db(file_name);
+
+
+    File.close();
     return 0;
 }

@@ -2,8 +2,10 @@
 #include <cstring>
 #include <sstream>
 
-void Book::export_to_db(FILE* File) {
-    fprintf(File, "%d, %s, %s, %s, %d\n", _id, _title, _author, _end_date, _score);
+void Book::export_to_db(std::string file_name) {
+    std::fstream File(file_name, std::ios_base::app);
+    File << _id << "," << _title << "," << _author << "," << _end_date << "," << _score << "\n";
+    File.close();
 }
 
 uint32_t Book::get_id() {
