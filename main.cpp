@@ -12,6 +12,7 @@ int main() {
     uint8_t answer = 0;
     scanf("%d", &answer);
     std::string file_name = ""; 
+
     // Opening/creating file
     if(answer == 2) {
         file_name = "new_file.txt";
@@ -42,7 +43,7 @@ int main() {
             }
         }
     }
-    std::cout << file_name << "\n";
+
     std::fstream File(file_name);
     std::vector<std::pair<uint32_t, Book>> db;
     std::string s;
@@ -53,9 +54,34 @@ int main() {
         uint32_t temp = stoi(item);
         db.push_back(std::make_pair(temp, Book(s)));
     }
-    Book bk("2,Idiot,Dostoevsky,13.09.2025,10");
-    bk.export_to_db(file_name);
 
+    while(true) {
+        printf("0. Close    1. Get      2. Edit     3. Remove \n");
+        printf("Enter command:  \n");
+        uint8_t command;
+        std::cin >> command;
+        if(command == 0) break;
+        switch (command)
+        {
+        case 1:
+            std::cout << "GET\n";
+            break;
+        case 2:
+            std::cout << "EDIT\n";
+            break;
+        case 3:
+            std::cout << "REM\n";
+            break;
+        default:
+            break;
+        }
+        continue;
+    }
+
+
+    for(auto it: db) {
+        File << it.second._id << "," << it.second._title << "," << it.second._author << "," << it.second._end_date << "," << it.second._score << "\n";
+    }
 
     File.close();
     return 0;

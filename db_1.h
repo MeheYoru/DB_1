@@ -12,7 +12,6 @@ class Book {
         Book(uint32_t id, std::string title, std::string author, std::string end_date, uint32_t score): _id(id), _title(title), _author(author), _end_date(_end_date), _score(score) {};
         Book(std::string data);
         ~Book() = default;
-        void export_to_db(std::string file_name);
     private:
         uint32_t get_id();
         
