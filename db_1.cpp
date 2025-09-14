@@ -12,7 +12,7 @@
 
 std::string Book::getBook() {
     std::string result;
-    result = "title: " + _title + " Author:  " + _author + " Finished on:  " + _end_date + " Score:  " + std::to_string(_score) + "\n";
+    result = "title: " + _title + " Author: " + _author + " Finished on: " + _end_date + " Score: " + std::to_string(_score) + "\n";
     return result;
 }
 

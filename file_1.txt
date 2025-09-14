@@ -1,2 +1,2 @@
 1,No longer human,Osamu Dazai,03.09.2024,4
-2,Idiot,Dostoevsky,13.09.2025,10
+3,Idiot,Dostoevsky,01.12.2000,12

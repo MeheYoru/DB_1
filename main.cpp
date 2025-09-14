@@ -71,7 +71,7 @@ int main() {
     File.close();
     while(true) {
         printf("0. Close    1. Get      2. Edit     3. Remove   4. Add\n");
-        printf("Enter command:  \n");
+        printf("Enter command:  ");
         std::string command_temp;
         uint8_t command;
         std::cin >> command_temp;
@@ -81,7 +81,7 @@ int main() {
         {
         case 1:
         {
-            printf("Enter ID:\n");
+            printf("Enter ID: ");
             std::string id_temp;
             std::cin >> id_temp;
             uint8_t id_search;
@@ -97,14 +97,14 @@ int main() {
         }
         case 2:
         {
-            printf("Enter ID:\n");
+            printf("Enter ID: ");
             bool flag = false;
             std::string id_temp;
             std::cin >> id_temp;
             uint8_t id_search;
             id_search = stoi(id_temp);
-            for(auto it: db) {
-                if(it.first == id_search) {
+            for(uint16_t i = 0; i < db.size(); i++) {
+                if(db[i].first == id_search) {
                     std::string title, author, date, score;
                     printf("Title:\n");
                     std::cin >> title;
@@ -114,19 +114,17 @@ int main() {
                     std::cin >> date;
                     printf("Score:\n");
                     std::cin >> score;
-                    db.push_back(std::make_pair(id_search, Book(id_search, title, author, date, stoi(score))));
-                    save_to_file(db, file_name);
-                    std::cout << it.second.getBook();
+                    db[i] = std::make_pair(id_search, Book(id_search, title, author, date, stoi(score)));
                     flag = true;
                 }
             }
-            if(flag) std::cout << "ID is already used";
+            if(!flag) std::cout << "ID is already used";
             save_to_file(db, file_name);
             break;
         }
         case 3:
             {
-            printf("Enter ID:\n");
+            printf("Enter ID: ");
             std::string id_temp;
             std::cin >> id_temp;
             uint8_t id_search;
@@ -142,7 +140,7 @@ int main() {
         }
         case 4:
         {
-            printf("Enter ID:\n");
+            printf("Enter ID: ");
             bool flag = false;
             std::string id_temp;
             std::cin >> id_temp;
@@ -157,13 +155,13 @@ int main() {
             }
             if(flag) break;
             std::string title, author, date, score;
-            printf("Title:\n");
+            printf("Title: ");
             std::cin >> title;
-            printf("Author:\n");
+            printf("Author: ");
             std::cin >> author;
-            printf("Date:\n");
+            printf("Date: ");
             std::cin >> date;
-            printf("Score:\n");
+            printf("Score: ");
             std::cin >> score;
             db.push_back(std::make_pair(id_search, Book(id_search, title, author, date, stoi(score))));
             save_to_file(db, file_name);
